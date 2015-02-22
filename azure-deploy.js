@@ -3,12 +3,13 @@
 var exec = require('child_process').exec,
     fs = require('fs'),
     path = require('path'),
-    args = process.argv;
+    args = process.argv,
+    currentFolder = process.cwd();
 
 if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
     if (args[2] === 'init') {
         // Copy deploy.sh to project's root
-        copyFile(path.resolve(__dirname, 'deploy.sh'), path.resolve(__dirname, '../../deploy.sh'));
+        copyFile(path.resolve(__dirname, 'deploy.sh'), path.resolve(currentFolder + '/deploy.sh'));
     } else if (args[2] === 'build') {
         exec('ember build -prod', {
             stdout: true,

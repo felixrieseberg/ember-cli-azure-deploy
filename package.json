@@ -23,5 +23,6 @@
       "type": "MIT",
       "url": "http://github.com/felixrieseberg/ember-cli-azure-deploy/blob/master/LICENSE"
     }
-  ]
+  ],
+  "devDependencies": {}
 }
