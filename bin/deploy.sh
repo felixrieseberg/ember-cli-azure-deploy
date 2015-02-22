@@ -52,7 +52,7 @@ NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 
 EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
 BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
-AZUREDEPLOY_PATH="$NODE_MODULES_DIR\\ember-cli-deploy-azure\\bin\\azure-deploy"
+AZUREDEPLOY_PATH="$NODE_MODULES_DIR\\ember-cli-azure-deploy\\bin\\azure-deploy"
 
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
