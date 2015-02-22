@@ -12,8 +12,8 @@ if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
         copyFile(path.resolve(__dirname, 'deploy.sh'), path.resolve(currentFolder + '/deploy.sh'));
     } else if (args[2] === 'build') {
         exec('ember build -prod', {
+            cwd: currentFolder,
             stdout: true,
-            stderr: true,
             stdin: false
         }, function (err, stdout, stderr) {
             if (err) {
