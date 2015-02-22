@@ -54,8 +54,6 @@ EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
 BOWER_PATH="$NODE_MODULES_DIR\\bower\\bin\\bower"
 AZUREDEPLOY_PATH="$NODE_MODULES_DIR\\ember-cli-deploy-azure\\bin\\azure-deploy"
 
-export PATH=$PATH:"/d/local/AppData/npm/node_modules/phantomjs/lib/phantom"
-
 EMBER_CMD="\"$NODE_EXE\" \"$EMBER_PATH\""
 BOWER_CMD="\"$NODE_EXE\" \"$BOWER_PATH\""
 AZUREDEPLOY_CMD="\"$NODE_EXE\" \"$AZUREDEPLOY_PATH\""
@@ -115,7 +113,7 @@ else
   echo bower already installed, nothing to do
 fi
 
-if [[ ! -e "$GRUNT_PATH" ]]; then
+if [[ ! -e "$AZUREDEPLOY_PATH" ]]; then
   echo Installing ember-cli-azure-deploy
   eval $NPM_CMD install -g ember-cli-azure-deploy
   exitWithMessageOnError "ember-cli-azure-deploy failed"
