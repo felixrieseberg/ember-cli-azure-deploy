@@ -1,0 +1,27 @@
+{
+  "name": "ember-cli-azure-deploy",
+  "version": "0.9.0",
+  "private": false,
+  "preferGlobal": "true",
+  "bin": {
+    "azure-deploy": "azure-deploy.js"
+  },
+  "repository": "https://github.com/felixrieseberg/ember-cli-azure-deploy",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": {
+    "name": "Felix Rieseberg",
+    "email": "felix@felixrieseberg.com",
+    "url": "http://www.felixrieseberg.com"
+  },
+  "bugs": {
+    "url": "https://github.com/felixrieseberg/ember-cli-azure-deploy/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/felixrieseberg/ember-cli-azure-deploy/blob/master/LICENSE"
+    }
+  ]
+}
