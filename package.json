@@ -10,6 +10,16 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "keywords": [
+    "Azure",
+    "Azure Websites",
+    "Ember",
+    "Ember.js",
+    "Ember-Cli",
+    "Ember Cli",
+    "Deployment",
+    "Ember build"
+  ],
   "author": {
     "name": "Felix Rieseberg",
     "email": "felix@felixrieseberg.com",
