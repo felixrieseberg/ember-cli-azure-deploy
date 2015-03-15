@@ -6,7 +6,7 @@ This is cool because Azure Websites can be automatically hooked up to any Git re
 ##### Installation
 Run the following two commands in your app's root folder: 
 ```
-npm install --save-dev -g ember-cli-deploy-azure
+npm install --save-dev -g ember-cli-azure-deploy
 azure-deploy init
 ```
 
