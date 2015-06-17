@@ -46,8 +46,8 @@ SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
 SCRIPT_DIR="${SCRIPT_DIR%/*}"
 ARTIFACTS=$SCRIPT_DIR/../artifacts
 KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
-NODE_EXE="$PROGRAMFILES\\nodejs\\0.12.0\\node.exe"
-NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\2.9.1\\node_modules\\npm\\bin\\npm-cli.js\""
+NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
+NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
 NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 
 EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
@@ -70,12 +70,6 @@ if [[ ! -n "$NEXT_MANIFEST_PATH" ]]; then
   fi
 fi
 
-# if [[ -d node_modules ]]; then
-#   echo Removing old node_modules folder
-#   rm -Rf node_modules
-#   exitWithMessageOnError "node_modules removal failed"
-# fi
-
 if [[ ! -n "$DEPLOYMENT_TARGET" ]]; then
   DEPLOYMENT_TARGET=$ARTIFACTS/wwwroot
 else
@@ -97,17 +91,25 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
   fi
 fi
 
-if [[ ! -e "$EMBER_PATH" ]]; then
-  echo Installing ember-cli
-  eval $NPM_CMD install -g ember-cli
-  exitWithMessageOnError "ember-cli failed"
-else
-  echo ember-cli already installed, nothing to do
-fi
+##################################################################################################################################
+# Installing dependencies to take load of ember-cli install
+# -----
+
+eval $NPM_CMD install --no-optional --no-bin-links Automattic/engine.io-client
+eval $NPM_CMD install --no-optional --no-bin-links socket.io
+eval $NPM_CMD install --no-optional --no-bin-links testem
+
+##################################################################################################################################
+# Installing dependencies to take load of ember-cli install
+# -----
+
+echo Installing ember-cli
+eval $NPM_CMD install --no-optional --no-bin-links ember-cli
+exitWithMessageOnError "ember-cli failed"
 
 if [[ ! -e "$BOWER_PATH" ]]; then
   echo Installing bower
-  eval $NPM_CMD install -g bower
+  eval $NPM_CMD install --global --no-optional --no-bin-links bower
   exitWithMessageOnError "bower failed"
 else
   echo bower already installed, nothing to do
@@ -120,6 +122,23 @@ if [[ ! -e "$AZUREDEPLOY_PATH" ]]; then
 else
   echo ember-cli-azure-deploy already installed, nothing to do
 fi
+
+
+##################################################################################################################################
+# Print Versions
+# -----
+
+echo -n "Using Node "
+eval $NODE_EXE -v
+
+echo -n "Using npm "
+eval $NPM_CMD -v
+
+echo -n "Using bower "
+eval $BOWER_CMD -v
+
+echo -n "Using ember-cli-azure-deploy "
+eval $AZUREDEPLOY_CMD -v
 
 ##################################################################################################################################
 # Build
