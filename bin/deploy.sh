@@ -107,6 +107,10 @@ echo Installing ember-cli
 eval $NPM_CMD install --no-optional --no-bin-links ember-cli
 exitWithMessageOnError "ember-cli failed"
 
+echo Installing ember-cli-azure-deploy
+eval $NPM_CMD install -g ember-cli-azure-deploy
+exitWithMessageOnError "ember-cli-azure-deploy failed"
+
 if [[ ! -e "$BOWER_PATH" ]]; then
   echo Installing bower
   eval $NPM_CMD install --global --no-optional --no-bin-links bower
@@ -114,15 +118,6 @@ if [[ ! -e "$BOWER_PATH" ]]; then
 else
   echo bower already installed, nothing to do
 fi
-
-if [[ ! -e "$AZUREDEPLOY_PATH" ]]; then
-  echo Installing ember-cli-azure-deploy
-  eval $NPM_CMD install -g ember-cli-azure-deploy
-  exitWithMessageOnError "ember-cli-azure-deploy failed"
-else
-  echo ember-cli-azure-deploy already installed, nothing to do
-fi
-
 
 ##################################################################################################################################
 # Print Versions
