@@ -7,6 +7,18 @@ var exec = require('child_process').exec,
     args = process.argv,
     currentFolder = process.cwd();
 
+// Check for -v
+if (args && args[2] && args[2] === '-v') {
+    var package = require('../package.json');
+
+    if (package && package.version) {
+        return console.log(package.version);
+    } else {
+        console.log('ember-cli-azure-deploy package.json missing, please reinstall!');
+    }
+}
+
+// Check for commands
 if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
     if (args[2] === 'init') {
         // Copy deploy.sh to project's root
@@ -15,7 +27,7 @@ if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
     } else if (args[2] === 'build') {
         var cp, captureOutput;
 
-        cp = exec('ember build -prod', {
+        cp = exec('./node-modules/ember-cli/bin/ember build -prod', {
             cwd: currentFolder,
             stdout: true,
             stdin: false
