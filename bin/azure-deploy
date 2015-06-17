@@ -27,7 +27,7 @@ if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
     } else if (args[2] === 'build') {
         var cp, captureOutput;
 
-        cp = exec('./node_modules/ember-cli/bin/ember build -prod', {
+        cp = exec(currentFolder + '/node_modules/ember-cli/bin/ember build -prod', {
             cwd: currentFolder,
             stdout: true,
             stdin: false
