@@ -11,3 +11,8 @@ azure-deploy init
 ```
 
 This will create a deploy.sh in your project's root folder, enabling Azure to follow a set of instructions - including installing all the required Node Modules, running `ember build` and deploying the resulting `dist/` folder to your website's `wwwroot`.
+
+##### Reporting Issues
+If you run into any trouble, [please do report it](https://github.com/felixrieseberg/ember-cli-azure-deploy/issues). To get the latest log of what actually went wrong, visit the [Azure Management Portal](https://manage.windowsazure.com), go to your website, and select 'Deployments'. Each deployment will have its own log, even if failed.
+
+To take a look at the file system (and get a PowerShell / CMD on your website), visit http://YOUR_WEBSITE.scm.azurewebsites.net. You will also find logs there.
