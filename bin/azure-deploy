@@ -25,9 +25,10 @@ if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
         copyFile(path.resolve(__dirname, '.deployment'), path.resolve(currentFolder + '/.deployment'));
         copyFile(path.resolve(__dirname, 'deploy.sh'), path.resolve(currentFolder + '/deploy.sh'));
     } else if (args[2] === 'build') {
-        var cp, captureOutput;
+        var execPath = path.normalize(currentFolder + path.resolve('node_modules', 'ember-cli', 'bin', 'ember')),
+            cp, captureOutput;
 
-        cp = exec(currentFolder + '/node_modules/ember-cli/bin/ember build -prod', {
+        cp = exec(execPath + ' build -prod', {
             cwd: currentFolder,
             stdout: true,
             stdin: false
