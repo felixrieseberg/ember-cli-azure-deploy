@@ -47,7 +47,7 @@ SCRIPT_DIR="${SCRIPT_DIR%/*}"
 ARTIFACTS=$SCRIPT_DIR/../artifacts
 KUDU_SYNC_CMD=${KUDU_SYNC_CMD//\"}
 NODE_EXE="$PROGRAMFILES\\nodejs\\0.10.32\\node.exe"
-NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\1.4.28\\node_modules\\npm\\bin\\npm-cli.js\""
+NPM_CMD="\"$NODE_EXE\" \"$PROGRAMFILES\\npm\\3.1.0\\node_modules\\npm\\bin\\npm-cli.js\""
 NODE_MODULES_DIR="$APPDATA\\npm\\node_modules"
 
 EMBER_PATH="$NODE_MODULES_DIR\\ember-cli\\bin\\ember"
@@ -90,14 +90,6 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
     KUDU_SYNC_CMD=$APPDATA/npm/node_modules/kuduSync/bin/kuduSync
   fi
 fi
-
-##################################################################################################################################
-# Installing dependencies to take load of ember-cli install
-# -----
-
-eval $NPM_CMD install --no-optional --no-bin-links Automattic/engine.io-client
-eval $NPM_CMD install --no-optional --no-bin-links socket.io
-eval $NPM_CMD install --no-optional --no-bin-links testem
 
 ##################################################################################################################################
 # Installing dependencies to take load of ember-cli install

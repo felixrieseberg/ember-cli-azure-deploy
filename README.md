@@ -4,9 +4,15 @@ This Node Module enables Azure Websites to run ember build (building the Ember C
 This is cool because Azure Websites can be automatically hooked up to any Git repository (including GitHub, BitBucket, etc). Together with this module, enabling continuous deployment for your Ember Cli app - simply push a new commit to GitHub and the new version of your website will be live within seconds. For more information, see [this blog post](http://felixrieseberg.com/deploying-ember-cli-to-azure-websites/). Made with :heart: by Microsoft.
 
 ##### Installation
-Run the following two commands in your app's root folder: 
+For Ember Cli 1.13.8 / 2.x (or newer) the following two commands in your app's root folder: 
 ```
 npm install --save-dev -g ember-cli-azure-deploy
+azure-deploy init
+```
+
+**If you're running Ember Cli 1.13.7 (or below)**, please install with:
+```
+npm install -g ember-cli-azure-deploy@1.2.5
 azure-deploy init
 ```
 

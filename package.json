@@ -36,6 +36,7 @@
   ],
   "devDependencies": {},
   "dependencies": {
-    "chalk": "^0.5.1"
+    "chalk": "^0.5.1",
+    "semver": "^5.0.1"
   }
 }
