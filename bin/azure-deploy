@@ -21,7 +21,7 @@ if (args && args[2] && args[2] === '-v') {
 // Check for commands
 if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
     if (args[2] === 'init') {
-        if (checkForOldEmber) {
+        if (checkForOldEmber()) {
             var message = 'You\'re using an older version of Ember - please reinstall and use ember-cli-azure-deploy@1.2.5.';
             return console.log(message);
         }
@@ -60,6 +60,11 @@ if (args && args[2] && (args[2] === 'init' || args[2] === 'build')) {
 }
 
 // Helper Functions
+/**
+ * Simple "copy" helper function
+ * @param  {string} source - Path to source
+ * @param  {string} target - Path to target
+ */
 function copyFile(source, target) {
     var rd, wr;
 
@@ -80,12 +85,16 @@ function copyFile(source, target) {
     }
 }
 
+/**
+ * Checks for an older, npm@2 requiring Ember version
+ * @return {boolean} - True if Ember is < 1.13.7
+ */
 function checkForOldEmber() {
     var semver = require('semver');
     var emberPackage = require(path.resolve(currentFolder, 'node_modules', 'ember-cli', 'package.json'));
 
     if (emberPackage && emberPackage.version) {
-        return (semver.lt(emberPackage.version, '1.13.7'));
+        return (semver.lte(emberPackage.version, '1.13.7'));
     } else {
         return false;
     }
