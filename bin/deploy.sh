@@ -116,7 +116,7 @@ fi
 # -----
 
 echo -n "Using Node "
-eval $NODE_EXE -v
+eval \"$NODE_EXE\" -v
 
 echo -n "Using npm "
 eval $NPM_CMD -v
